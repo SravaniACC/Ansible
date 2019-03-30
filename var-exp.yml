@@ -1,0 +1,11 @@
+- name: Deploy and start Apache HTTPD service
+  hosts: web
+  vars:
+    web_pkg: httpd
+
+  tasks:
+    - name: Required packages are installed and up to date
+      yum:
+        name:
+          - "{{ web_pkg  }}"
+
