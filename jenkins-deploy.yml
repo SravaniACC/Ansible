@@ -1,0 +1,17 @@
+---
+- hosts: app
+  become: yes
+  tasks :
+   - name : coppying tomcat file to remote server
+     copy:
+      src: /etc/ansible/playbooks/files/apache-tomcat-8.5.39
+      dest:  /opt
+
+   - name : copying war file to tomcat
+     copy:
+      src: /etc/ansible/playbooks/files/jenkins.war
+      dest: /opt/apache-tomcat-8.5.39/webapps
+
+   - name: Restaring the tomcat
+     command: sh /opt/apache-tomcat-8.5.39/bin/shutdown.sh
+              sh /opt/apache-tomcat-8.5.39/bin/startup.sh
