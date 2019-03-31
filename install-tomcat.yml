@@ -1,0 +1,11 @@
+---
+- hosts: app
+  become: yes
+  tasks :
+   - name : coppying tomcat file to remote server
+     copy:
+      src: /etc/ansible/playbooks/files/apache-tomcat-8.5.39
+      dest:  /opt
+
+   - name : Executing tomcat run script
+     command: sh  /opt/apache-tomcat-8.5.39/bin/startup.sh
