@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    pkg: httpd
+  tasks:
+    - name: Make sure HTTPD is installed
+      yum:
+        name: "{{ pkg }}"
+        state: present
