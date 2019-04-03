@@ -1,0 +1,24 @@
+---
+- hosts: app
+  become: yes
+  tasks :
+#   - name : coppying tomcat file to remote server
+#    copy:
+#     src: /etc/ansible/playbooks/files/apache-tomcat-8.5.39
+#      dest:  /opt
+
+#   - name : copying war file to tomcat
+#    copy:
+#      src: /etc/ansible/playbooks/files/jenkins.war
+#     dest: /opt/apache-tomcat-8.5.39/webapps
+
+#   - name: copying tomcat restart script
+#    copy:
+#      src: /etc/ansible/playbooks/files/tomcatrestart.sh
+#       dest: /opt/apache-tomcat-8.5.39/tomcatrestart.sh
+
+   - name: changing permissions
+     command: chmod +x  /opt/apache-tomcat-8.5.39/tomcatrestart.sh
+
+   - name: restarting tomcat from shell script
+     command: sh  /opt/apache-tomcat-8.5.39/tomcatrestart.sh
